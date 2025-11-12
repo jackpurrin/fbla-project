@@ -7,6 +7,9 @@ it's going to be mainly written in python, but i'm gonna work on making a rust v
 > [!WARNING]
 > this isn't required but you should be using SSH to pull and push the repository, and you should also be singing your commits with a SSH or GPG key!
 
+> [!TIP]
+> don't modify `main.py` unless you have 100% stable working changes. while you develop, work with test.py!
+
 https://probable-broccoli-r4r6qg5grw97cprr.github.dev/
 
 ## to-do list

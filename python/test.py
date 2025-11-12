@@ -1,42 +1,54 @@
 import pygame
+import sys
 
+# WINDOW STUFFS
+# Lets leave this value @ 1. When we get further into dev, change this to 60.
+FPS = 1
+FONT_SIZE = 16
+WIDTH, HEIGHT = 800, 600
+TITLE = "Basic Pygame Project"
 
-class ClickableSprite(pygame.sprite.Sprite):
-    def __init__(self, image, x, y, callback):
-        super().__init__()
-        self.image = image
-        self.rect = self.image.get_rect()
-        self.rect.x = x
-        self.rect.y = y
-        self.callback = callback
+# COLORS
+BACKGROUND = (30, 30, 30)
+WHITE = (255, 255, 255)
 
-    def update(self, events):
-        for event in events:
-            if event.type == pygame.MOUSEBUTTONUP:
-                if self.rect.collidepoint(event.pos):
-                    self.callback()
+# GAME VALUES
+money = 0
 
-
-def on_click():
-    money = money + 1
-    print(money)
-
+# Initialize Pygame
 pygame.init()
-screen = pygame.display.set_mode((400, 300))
 
-sprite = ClickableSprite(pygame.Surface((100, 100)), 50, 50, on_click)
-group = pygame.sprite.GroupSingle(sprite)
+font = pygame.font.Font('assets/fonts/main.ttf', FONT_SIZE)
 
+# Create the display surface
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption(TITLE)
+
+# Clock to control the frame rate
+clock = pygame.time.Clock()
+
+# Main game loop
 running = True
 while running:
-    events = pygame.event.get()
-    for event in events:
+    # Handle events
+    for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
 
-    group.update(events)
-    screen.fill((255, 255, 255))
-    group.draw(screen)
-    pygame.display.update()
+    # Fill the screen with a color (RGB)
+    screen.fill(BACKGROUND)
 
+    # This is where we make a text box
+    text = font.render(str(money), True, WHITE, BACKGROUND)
+    textbox = text.get_rect()
+    textbox.center = (WIDTH // 2, HEIGHT // 2)
+    screen.blit(text, textbox)
+
+    # Update the display
+    pygame.display.flip()
+
+    clock.tick(FPS)
+
+# Quit Pygame safely
 pygame.quit()
+sys.exit()
