@@ -1,6 +1,9 @@
 import pygame
 import sys
 
+sponge = pygame.image.load("assets/images/sponge.png")
+imagerect = sponge.get_rect()
+
 # Initialize Pygame
 pygame.init()
 
@@ -24,6 +27,7 @@ while running:
 
     # Fill the screen with a color (RGB)
     screen.fill((30, 30, 30))
+    screen.blit(sponge, imagerect)
 
     # Update the display
     pygame.display.flip()
