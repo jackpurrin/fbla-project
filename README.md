@@ -4,6 +4,8 @@ this is a repository for my FBLA project!! i scrapped the website design idea an
 
 it's going to be mainly written in python, but i'm gonna work on making a rust version. 
 
+https://probable-broccoli-r4r6qg5grw97cprr.github.dev/
+
 ## to-do list
 
 - [ ] get basic graphics working in pygame
