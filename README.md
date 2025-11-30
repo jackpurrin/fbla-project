@@ -2,20 +2,20 @@
 
 this is a repository for my FBLA project!! i scrapped the website design idea and decided to work on the tamogatchi idea. 
 
-it's going to be mainly written in python, but i'm gonna work on making a rust version. 
+it's going to be mainly written in lua.
 
 > [!WARNING]
 > this isn't required but you should be using SSH to pull and push the repository, and you should also be singing your commits with a SSH or GPG key!
 
 > [!TIP]
-> don't modify `main.py` unless you have 100% stable working changes. while you develop, work with test.py!
+> don't modify `main.lua` unless you have 100% stable working changes. while you develop, work with test.lua!
 
 > [!TIP]
-> docs for the `arcade` framework are located at https://api.arcade.academy/ !
+> docs for the `love` framework are located at https://love2d.org/wiki/ !
 
 ## to-do list
 
-- [ ] get basic graphics working in arcade!
+- [ ] get basic graphics working in LOVE!
 - [ ] make a "cost of care system"
     - this means:
     - food and supply costs
@@ -30,11 +30,9 @@ it's going to be mainly written in python, but i'm gonna work on making a rust v
 
 ## thanks!
 
-@jackpurrin for writing the rust and python code! 
-
 **big thanks to my girlfriend for doing the graphics!** 
 
-@MroofBoolean for helping me write the python code! 
+@MroofBoolean for helping me write the lua code! 
 
-@P135928 for helping me write my python code!
+@P135928 for helping me write my lua code!
 
