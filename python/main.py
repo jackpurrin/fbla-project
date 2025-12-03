@@ -1,13 +1,8 @@
 import time
 import os
 
-# Stands for In Game Time
-igt = 0
-hunger = 50
-happiness = 50
-money = 1000
-sleeping = False
-running = True
+time, hunger, mood, cash = 7, 50, 50, 1000
+sleeping, running = False, True
 
 cat = """\
       \    //
@@ -36,14 +31,24 @@ def help():
     input()
 
 def stats():
-    pass
+    print(f"Current happiness level: {mood}")
+    print(f"Current hunger is: {hunger}")
+    print(f"Current amount of cash is: {cash}")
 
+def addtime():
+    if time >= 25:
+        time = 0
+    else: 
+        time += 1
+
+clear()
 
 print("Which do you want? A cat or a dog?")
 
 pet = input()
 
 while(running):
+    addtime()
     clear()
 
     if pet == "cat":
@@ -53,6 +58,7 @@ while(running):
 
     print("Type 'help' for help!")
     print("Type 'stats' to check the stats!")
+    print(f"Hour is: {time}")
     userInput = input()
 
     if userInput == "help":
