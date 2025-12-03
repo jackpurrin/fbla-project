@@ -7,6 +7,7 @@ hunger = 50
 happiness = 50
 money = 1000
 sleeping = False
+running = True
 
 cat = """\
       \    //
@@ -29,10 +30,16 @@ print("Which do you want? A cat or a dog?")
 
 pet = input()
 
-if pet == "cat":
-    print(cat)
-elif pet == "dog":
-    print(dog)
-else: 
-    print(seal)
+while(running):
+    os.system('cls' if os.name == 'nt' else 'clear')
 
+    if pet == "cat":
+        print(cat)
+    elif pet == "dog":
+        print(dog)
+    else: 
+        print(seal)
+
+    print("Type 'help' for help!")
+    print("Type 'stats' to check the stats!")
+    input()
