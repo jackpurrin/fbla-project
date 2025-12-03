@@ -27,6 +27,7 @@ def help():
     print("Type 'p' to play")
     print("Type 's to put the pet to sleep'")
     print("Type 'h' to send to hospital")
+    print("Type 'quit' to quit")
     print("Press enter to close")
     input()
 
@@ -68,3 +69,8 @@ while(running):
     elif userInput == "stats":
         clear()
         stats()
+    elif userInput == "quit": 
+        clear()
+        running = False
+    else: 
+        pass
