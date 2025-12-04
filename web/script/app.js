@@ -10,4 +10,6 @@ function start() {
     } else if (type == "dog") {
         document.getElementById("pet").src = "assets/img/dog.png";
     }
+
+    document.getElementById("name").innerHTML = name;
 }
