@@ -2,6 +2,11 @@ var type;
 var gender;
 var nickname;
 
+var time = 7;
+var hunger = 5;
+var sleep = 10;
+var money = 100; // 100 for testing, prod will be 0.
+
 let catUrl = "assets/img/cat.jpg";
 let dogUrl = "assets/img/dog.png";
 let sealUrl = "assets/img/seal.jpg"
@@ -39,4 +44,12 @@ function render() {
     }
 
     document.getElementById("name").innerHTML = localStorage.getItem("localNick")
+}
+
+function main() {
+    setInterval(() => {
+        time += 1;
+        hunger -= 0.2;
+        sleep -= 1;
+    }, 1000);
 }
