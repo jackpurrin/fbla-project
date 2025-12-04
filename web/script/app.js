@@ -4,13 +4,17 @@ var nickname;
 
 var time = 7;
 var hunger = 5;
-var sleep = 10;
+var sleep = 0;
 var mood = 10;
 var money = 100; // 100 for testing, prod will be 0.
+var sick = 0;
+var depressed = false;
+var bad_tick = 0;
 
 let catUrl = "assets/img/cat.jpg";
 let dogUrl = "assets/img/dog.png";
-let sealUrl = "assets/img/seal.jpg"
+let sealUrl = "assets/img/seal.jpg";
+let skullUrl = "assets/img/skull.png";
 
 function save() {
     type = document.querySelector('input[name="type"]:checked')?.value;
@@ -22,7 +26,6 @@ function save() {
     localStorage.setItem("localType", type);
 
     if (type == undefined || gender == undefined || nickname == undefined) {
-        ("Make sure you fill all the boxes!");
         document.getElementById('error-text').removeAttribute("hidden");
         
     } else {
@@ -35,7 +38,7 @@ function update() {
     document.getElementById("time").innerHTML = "Time: " + time
     document.getElementById("hunger").innerHTML = "Hunger: " + hunger
     document.getElementById("mood").innerHTML = "Happiness: " + mood
-    document.getElementById("sleep").innerHTML = "Sleep: " + sleep
+    document.getElementById("sleep").innerHTML = "Sleepiness: " + sleep
     document.getElementById("money").innerHTML = "Money: " + money
 }
 
@@ -58,11 +61,38 @@ function render() {
 }
 
 function main() {
-    setInterval(() => {
-        time += 1;
-        hunger -= 0.2;
-        sleep -= 1;
-        mood -= 0.5;
+    const main_loop = setInterval(() => {
+        if (time >= 24) {
+            time = 0
+        } else {
+            time += 1;
+        }
+        if (hunger > 0) {
+            hunger -= 0.5;
+        } else {
+            sick -= 0.1;
+        }
+        if (sleep < 10) {
+            sleep += 1;
+        } else {
+            sick += 0.05;
+            mood -+ 1;
+        }
+
+        if (mood > 0) {
+            mood -= 0.5;
+        } else {
+            depressed = true;
+        }
+        if (sick < -0.5) {
+            document.getElementById('unhealthy').removeAttribute("hidden");
+        }
+        if (sleep == 10) {
+            document.getElementById('tired').removeAttribute("hidden");
+        }
+        if (depressed == true) {
+            document.getElementById('depressed').removeAttribute("hidden");
+        }
 
         update()
     }, 5000);
