@@ -1,0 +1,22 @@
+@import url(vars.css);
+
+html {
+    background-color: var(--bkg-color);
+    color: var(--txt-color);
+    font-family: MS Gothic, monospace;
+}
+
+main {
+    text-align: center;
+    width: 50%;
+    margin: auto;
+}
+
+a {
+    color: white;
+}
+
+br {
+   display: block;
+   margin: 10px 0;
+}
