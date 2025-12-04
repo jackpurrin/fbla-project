@@ -4,6 +4,7 @@ var nickname;
 
 let catUrl = "assets/img/cat.jpg";
 let dogUrl = "assets/img/dog.png";
+let sealUrl = "assets/img/seal.jpg"
 
 function save() {
     type = document.querySelector('input[name="type"]:checked')?.value;
@@ -33,6 +34,8 @@ function render() {
         document.getElementById("pet").src = dogUrl;
     } else if (localStorage.getItem("localType") == "cat") {
         document.getElementById("pet").src = catUrl;
+    } else if (localStorage.getItem("localType") == "seal") {
+        document.getElementById("pet").src = sealUrl;
     }
 
     document.getElementById("name").innerHTML = localStorage.getItem("localNick")
