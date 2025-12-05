@@ -2,20 +2,31 @@ var type;
 var gender;
 var nickname;
 
-var time = 7;
-var hunger = 5;
-var sleep = 0;
-var mood = 10;
-var money = 100; // 100 for testing, prod will be 0.
-var sick = 0;
-var depressed = false;
-var bad_tick = 0;
-var in_bed = false;
-
 let catUrl = "/assets/img/cat.jpg";
 let dogUrl = "/assets/img/dog.png";
 let sealUrl = "/assets/img/seal.jpg";
 let skullUrl = "/assets/img/skull.png";
+
+if (localStorage.getItem("hasSaved") == "true") {
+    load()
+    time = Number(time)
+    hunger = Number(hunger)
+    sleep = Number(sleep)
+    mood = Number(mood)
+    money = Number(money)
+    sick = Number(sick)
+    bad_tick = Number(bad_tick)
+} else {
+    var time = 7;
+    var hunger = 5;
+    var sleep = 0;
+    var mood = 10;
+    var money = 100; // 100 for testing, prod will be 0.
+    var sick = 0;
+    var depressed = false;
+    var bad_tick = 0;
+    var in_bed = false;
+}
 
 function save() {
     type = document.querySelector('input[name="type"]:checked')?.value;
@@ -28,14 +39,44 @@ function save() {
 
     if (type == undefined || gender == undefined || nickname == undefined) {
         document.getElementById('error-text').removeAttribute("hidden");
-        
+
     } else {
         localStorage.setItem("isAdopted", "True")
         document.location.href = "/";
     }
 }
 
+function localSave() {
+    localStorage.setItem("localTime", time)
+    localStorage.setItem("localHunger", hunger)
+    localStorage.setItem("localSleep", sleep)
+    localStorage.setItem("localMood", mood)
+    localStorage.setItem("localMoney", money)
+    localStorage.setItem("localSick", sick)
+    localStorage.setItem("localDepressed", depressed)
+    localStorage.setItem("localBad", bad_tick)
+    localStorage.setItem("localBed", in_bed)
+}
+
+function load() {
+    time = localStorage.getItem("localTime")
+    hunger = localStorage.getItem("localHunger");
+    sleep = localStorage.getItem("localSleep");
+    mood = localStorage.getItem("localMood");
+    money = localStorage.getItem("localMoney");
+    sick = localStorage.getItem("localSick");
+    depressed = localStorage.getItem("localDepressed");
+    bad_tick = localStorage.getItem("localBad");
+    in_bed = localStorage.getItem("localBed");
+}
+
 function update() {
+    if (localStorage.getItem("hasSaved") == null) {
+        localStorage.setItem("hasSaved", true)
+    } else {
+        localSave()
+    }
+
     document.getElementById("time").innerHTML = "Time: " + time
     document.getElementById("hunger").innerHTML = "Hunger: " + hunger
     document.getElementById("mood").innerHTML = "Happiness: " + mood
@@ -55,8 +96,6 @@ function render() {
     } else if (localStorage.getItem("localType") == "seal") {
         document.getElementById("pet").src = sealUrl;
     }
-
-    update()
 
     document.getElementById("name").innerHTML = localStorage.getItem("localNick")
 }
@@ -83,7 +122,7 @@ function main() {
             }
         } else {
             sick += 0.05;
-            mood -+ 1;
+            mood - +1;
         }
 
         if (in_bed == true) {
