@@ -12,7 +12,7 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@v4.3.6
         with:
           server: ftp.jackpurrin.moe
-          username: pet@jackpurrin.moe
+          username: pet@pet.jackpurrin.moe
           password: ${{ secrets.ftp_password }}
           local-dir: public/
           port: 21
